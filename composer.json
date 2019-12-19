@@ -1,0 +1,10 @@
+{
+    "name": "hexlet/php-project-lvl1",
+    "description": "first project",
+    "require": {
+        "php": ">7.2"
+    },
+	"bin": [
+        "bin/brain-games"
+    ]
+}

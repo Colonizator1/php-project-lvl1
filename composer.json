@@ -1,5 +1,5 @@
 {
-    "name": "hexlet/php-project-lvl1",
+    "name": "colonizator/php-project-lvl1",
     "description": "first project",
     "require": {
         "php": ">7.2"

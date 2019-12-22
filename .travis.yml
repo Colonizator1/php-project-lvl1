@@ -1,3 +1,3 @@
 language: php
-install: skip
+install: make install
 script: make lint

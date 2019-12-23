@@ -3,13 +3,17 @@
     "description": "first project",
     "require": {
         "php": ">7.2",
-	"wp-cli/php-cli-tools": "*"
+	    "wp-cli/php-cli-tools": "*"
     },
 	"bin": [
-        "bin/brain-games"
+        "bin/brain-games",
+        "bin/brain-even"
     ],
     "autoload": {
-	 "files": ["src/Cli.php"]
+	 "files": [
+         "src/Cli.php",
+         "src/evenGame.php"
+        ]
 	},
 	"scripts": {
         "phpcs": "phpcs"

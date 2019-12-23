@@ -6,3 +6,4 @@ My First PHP-project
 ```bash
 composer require colonizator/php-project-lvl1
 ```
+<script id="asciicast-zSBCaQlLJY9iEkSABquL9s3za" src="https://asciinema.org/a/zSBCaQlLJY9iEkSABquL9s3za.js" async></script>

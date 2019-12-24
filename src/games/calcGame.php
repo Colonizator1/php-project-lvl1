@@ -27,7 +27,7 @@ function startCalcGame(int $countReplayGames)
             $correctAnswer = $firstNum * $secondNum;
         }
         $answer = prompt("Your answer");
-        if(!printResult($answer, $correctAnswer)) {
+        if (!printResult($answer, $correctAnswer)) {
             line("Let's try again, $name!");
             break;
         }

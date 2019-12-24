@@ -21,7 +21,7 @@ function startEvenGame(int $countReplayGames)
             $correctAnswer = "no";
         }
         $answer = prompt("Your answer");
-        if(!printResult($answer, $correctAnswer)) {
+        if (!printResult($answer, $correctAnswer)) {
             line("Let's try again, $name!");
             break;
         }

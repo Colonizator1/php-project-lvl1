@@ -11,7 +11,8 @@ function printHelloText(string $gameRules)
     line($gameRules);
     line();
 }
-function getName() {
+function getName()
+{
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     line();

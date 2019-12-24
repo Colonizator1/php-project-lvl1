@@ -6,4 +6,12 @@ My First PHP-project
 ```bash
 composer require colonizator/php-project-lvl1
 ```
+## How it's work.
+```bash
+brain-even
+```
 [![asciicast](https://asciinema.org/a/zSBCaQlLJY9iEkSABquL9s3za.svg)](https://asciinema.org/a/zSBCaQlLJY9iEkSABquL9s3za)
+```bash
+brain-calc
+```
+[![asciicast](https://asciinema.org/a/nFi9ZBqtA0PNHROG5cIDwCr4u.svg)](https://asciinema.org/a/nFi9ZBqtA0PNHROG5cIDwCr4u)

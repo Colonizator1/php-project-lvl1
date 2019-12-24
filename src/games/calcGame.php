@@ -10,7 +10,8 @@ use function BrainGames\functions\printResult;
 
 function startCalcGame(int $countReplayGames)
 {
-    printHelloText('Answer "yes" if the number is even, otherwise answer "no".');
+    $rules = 'What is the result of the expression?';
+    printHelloText($rules);
     $name = getname();
     for ($i = 1; $i <= $countReplayGames; $i++) {
         $firstNum = mt_rand(1, 100);

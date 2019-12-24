@@ -28,3 +28,47 @@ function printResult($answer, $correctAnswer)
         return false;
     }
 }
+function evenGameQuestion()
+{
+    return mt_rand(1, 100);
+}
+function evenGameCorrectAnswer($num)
+{
+    if ($num % 2 === 0) {
+        return "yes";
+    } else {
+        return "no";
+    }
+}
+function calcGameQuestion()
+{
+    $firstNum = mt_rand(1, 100);
+    $secondNum = mt_rand(1, 100);
+    $operators = ['+', '-', '*'];
+    $randomOperator = $operators[mt_rand(0, count($operators) - 1)];
+    return "{$firstNum} {$randomOperator} {$secondNum}";
+}
+function calcGameCorrectAnswer($question)
+{
+    $array = explode(' ', $question);
+    if ($array[1] === '+') {
+        return $array[0] + $array[2];
+    } elseif ($array[1] === '-') {
+        return $array[0] - $array[2];
+    } elseif ($array[1] === '*') {
+        return $array[0] * $array[2];
+    }
+}
+function gameResult($name, $answer, $correctAnswer, $numberOfGame)
+{
+    if ($answer == $correctAnswer) {
+        line("Correct!");
+        if ($numberOfGame == 3) {
+            line("Congratulations, $name!");
+        }
+    } else {
+        line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.");
+        line("Let's try again, $name!");
+        return false;
+    }
+}

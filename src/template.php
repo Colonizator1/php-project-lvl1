@@ -13,6 +13,8 @@ use function BrainGames\functions\calcGameQuestion;
 use function BrainGames\functions\calcGameCorrectAnswer;
 use function BrainGames\functions\gcdGameQuestion;
 use function BrainGames\functions\gcdGameCorrectAnswer;
+use function BrainGames\functions\progrGameQuestion;
+use function BrainGames\functions\progrGameCorrectAnswer;
 
 function getRules($game)
 {
@@ -26,6 +28,43 @@ function getRules($game)
         case 'brain-gcd':
             return 'Find the greatest common divisor of given numbers.';
             break;
+        case 'brain-progression':
+            return 'What number is missing in the progression?';
+            break;
+    }
+}
+function getQuestion($game)
+{
+    switch ($game) {
+        case 'brain-even':
+            return evenGameQuestion();
+            break;
+        case 'brain-calc':
+            return calcGameQuestion();
+            break;
+        case 'brain-gcd':
+            return gcdGameQuestion();
+            break;
+        case 'brain-progression':
+            return progrGameQuestion();
+            break;
+    }
+}
+function getCorrectAnswer($game, $question)
+{
+    switch ($game) {
+        case 'brain-even':
+            return evenGameCorrectAnswer($question);
+            break;
+        case 'brain-calc':
+            return calcGameCorrectAnswer($question);
+            break;
+        case 'brain-gcd':
+            return gcdGameCorrectAnswer($question);
+            break;
+        case 'brain-progression':
+            return progrGameCorrectAnswer($question);
+            break;
     }
 }
 function startGame(int $countReplayGames, $game)
@@ -34,19 +73,8 @@ function startGame(int $countReplayGames, $game)
     printHelloText($rules);
     $name = getname();
     for ($i = 1; $i <= $countReplayGames; $i++) {
-        switch ($game) {
-            case 'brain-even':
-                $question = evenGameQuestion();
-                $correctAnswer = evenGameCorrectAnswer($question);
-                break;
-            case 'brain-calc':
-                $question = calcGameQuestion();
-                $correctAnswer = calcGameCorrectAnswer($question);
-                break;
-            case 'brain-gcd':
-                $question = gcdGameQuestion();
-                $correctAnswer = gcdGameCorrectAnswer($question);
-        }
+        $question = getQuestion($game);
+        $correctAnswer = getCorrectAnswer($game, $question);
         line("Question: {$question}");
         $answer = prompt("Your answer");
         if (!gameResult($name, $answer, $correctAnswer, $i)) {

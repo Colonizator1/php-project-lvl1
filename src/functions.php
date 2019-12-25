@@ -18,13 +18,66 @@ function getName()
     line();
     return $name;
 }
-function printResult($answer, $correctAnswer)
+function gameResult($name, $answer, $correctAnswer, $numberOfGame)
 {
     if ($answer == $correctAnswer) {
         line("Correct!");
+        if ($numberOfGame == 3) {
+            line("Congratulations, $name!");
+        }
         return true;
     } else {
         line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.");
+        line("Let's try again, $name!");
         return false;
+    }
+}
+function evenGameQuestion()
+{
+    return mt_rand(1, 100);
+}
+function evenGameCorrectAnswer($num)
+{
+    if ($num % 2 === 0) {
+        return "yes";
+    } else {
+        return "no";
+    }
+}
+function calcGameQuestion()
+{
+    $firstNum = mt_rand(1, 100);
+    $secondNum = mt_rand(1, 100);
+    $operators = ['+', '-', '*'];
+    $randomOperator = $operators[mt_rand(0, count($operators) - 1)];
+    return "{$firstNum} {$randomOperator} {$secondNum}";
+}
+function calcGameCorrectAnswer($question)
+{
+    $array = explode(' ', $question);
+    if ($array[1] === '+') {
+        return $array[0] + $array[2];
+    } elseif ($array[1] === '-') {
+        return $array[0] - $array[2];
+    } elseif ($array[1] === '*') {
+        return $array[0] * $array[2];
+    }
+}
+function gcdGameQuestion()
+{
+    $firstNum = mt_rand(1, 100);
+    $secondNum = mt_rand(1, 100);
+    return "{$firstNum} {$secondNum}";
+}
+function gcdGameCorrectAnswer($question)
+{
+    $array = explode(' ', $question);
+    $firstNum = $array[0];
+    $secondNum = $array[1];
+    $firstNum >= $secondNum ? $maxDivisor = $secondNum : $maxDivisor = $firstNum;
+    for ($div = $maxDivisor; $div > 0; $div--) {
+        if ($firstNum % $div == 0 && $secondNum % $div == 0) {
+            return $div;
+        }
     }
 }

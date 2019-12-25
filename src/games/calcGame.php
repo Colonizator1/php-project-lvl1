@@ -6,7 +6,9 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\functions\printHelloText;
 use function BrainGames\functions\getName;
-use function BrainGames\functions\printResult;
+use function BrainGames\functions\gameResult;
+use function BrainGames\functions\calcGameQuestion;
+use function BrainGames\functions\calcGameCorrectAnswer;
 
 function startCalcGame(int $countReplayGames)
 {
@@ -14,26 +16,13 @@ function startCalcGame(int $countReplayGames)
     printHelloText($rules);
     $name = getname();
     for ($i = 1; $i <= $countReplayGames; $i++) {
-        $firstNum = mt_rand(1, 100);
-        $secondNum = mt_rand(1, 100);
-        $operators = ['+', '-', '*'];
-        $randomOperator = $operators[mt_rand(0, count($operators) - 1)];
-        $expression = "{$firstNum} {$randomOperator} {$secondNum}";
-        line("Question: {$expression}");
-        if ($randomOperator === '+') {
-            $correctAnswer = $firstNum + $secondNum;
-        } elseif ($randomOperator === '-') {
-            $correctAnswer = $firstNum - $secondNum;
-        } elseif ($randomOperator === '*') {
-            $correctAnswer = $firstNum * $secondNum;
-        }
+        //change here new game functions
+        $question = calcGameQuestion();
+        $correctAnswer = calcGameCorrectAnswer($question);
+        line("Question: {$question}");
         $answer = prompt("Your answer");
-        if (!printResult($answer, $correctAnswer)) {
-            line("Let's try again, $name!");
+        if (!gameResult($name, $answer, $correctAnswer, $i)) {
             break;
-        }
-        if ($i == $countReplayGames) {
-            line("Congratulations, $name!");
         }
     }
 }

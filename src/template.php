@@ -20,63 +20,67 @@ use function BrainGames\functions\primeGameCorrectAnswer;
 
 function getRules($game)
 {
+    $result = '';
     switch ($game) {
         case 'brain-even':
-            return 'Answer "yes" if the number is even, otherwise answer "no".';
+            $result = 'Answer "yes" if the number is even, otherwise answer "no".';
             break;
         case 'brain-calc':
-            return 'What is the result of the expression?';
+            $result = 'What is the result of the expression?';
             break;
         case 'brain-gcd':
-            return 'Find the greatest common divisor of given numbers.';
+            $result = 'Find the greatest common divisor of given numbers.';
             break;
         case 'brain-progression':
-            return 'What number is missing in the progression?';
+            $result = 'What number is missing in the progression?';
             break;
         case 'brain-prime':
-            return 'Answer "yes" if given number is prime. Otherwise answer "no".';
+            $result = 'Answer "yes" if given number is prime. Otherwise answer "no".';
             break;
     }
+    return $result;
 }
 function getQuestion($game)
 {
     switch ($game) {
         case 'brain-even':
-            return evenGameQuestion();
+            $result = evenGameQuestion();
             break;
         case 'brain-calc':
-            return calcGameQuestion();
+            $result = calcGameQuestion();
             break;
         case 'brain-gcd':
-            return gcdGameQuestion();
+            $result = gcdGameQuestion();
             break;
         case 'brain-progression':
-            return progrGameQuestion();
+            $result = progrGameQuestion();
             break;
         case 'brain-prime':
-            return primeGameQuestion();
+            $result = primeGameQuestion();
             break;
     }
+    return $result;
 }
 function getCorrectAnswer($game, $question)
 {
     switch ($game) {
         case 'brain-even':
-            return evenGameCorrectAnswer($question);
+            $result = evenGameCorrectAnswer($question);
             break;
         case 'brain-calc':
-            return calcGameCorrectAnswer($question);
+            $result = calcGameCorrectAnswer($question);
             break;
         case 'brain-gcd':
-            return gcdGameCorrectAnswer($question);
+            $result = gcdGameCorrectAnswer($question);
             break;
         case 'brain-progression':
-            return progrGameCorrectAnswer($question);
+            $result = progrGameCorrectAnswer($question);
             break;
         case 'brain-prime':
-            return primeGameCorrectAnswer($question);
+            $result = primeGameCorrectAnswer($question);
             break;
     }
+    return $result;
 }
 function startGame(int $countReplayGames, $game)
 {

@@ -29,7 +29,11 @@
 	    "files": [
             "src/Cli.php",
             "src/functions.php",
-            "src/template.php"
+            "src/games/evenGame.php",
+            "src/games/calcGame.php",
+            "src/games/gcdGame.php",
+            "src/games/progrGame.php",
+            "src/games/primeGame.php"
         ]
 	},
 	"scripts": {

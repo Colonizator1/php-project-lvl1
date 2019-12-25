@@ -15,6 +15,8 @@ use function BrainGames\functions\gcdGameQuestion;
 use function BrainGames\functions\gcdGameCorrectAnswer;
 use function BrainGames\functions\progrGameQuestion;
 use function BrainGames\functions\progrGameCorrectAnswer;
+use function BrainGames\functions\primeGameQuestion;
+use function BrainGames\functions\primeGameCorrectAnswer;
 
 function getRules($game)
 {
@@ -30,6 +32,9 @@ function getRules($game)
             break;
         case 'brain-progression':
             return 'What number is missing in the progression?';
+            break;
+        case 'brain-prime':
+            return 'Answer "yes" if given number is prime. Otherwise answer "no".';
             break;
     }
 }
@@ -48,6 +53,9 @@ function getQuestion($game)
         case 'brain-progression':
             return progrGameQuestion();
             break;
+        case 'brain-prime':
+            return primeGameQuestion();
+            break;
     }
 }
 function getCorrectAnswer($game, $question)
@@ -64,6 +72,9 @@ function getCorrectAnswer($game, $question)
             break;
         case 'brain-progression':
             return progrGameCorrectAnswer($question);
+            break;
+        case 'brain-prime':
+            return primeGameCorrectAnswer($question);
             break;
     }
 }

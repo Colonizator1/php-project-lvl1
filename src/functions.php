@@ -109,3 +109,17 @@ function progrGameCorrectAnswer($question)
     }
     return $array[$unknownNum];
 }
+function primeGameQuestion()
+{
+    $num = mt_rand(1, 100);
+    return $num;
+}
+function primeGameCorrectAnswer($num)
+{
+    for ($i = 2; $i <= floor($num / 2); $i++) {
+        if ($num % $i === 0) {
+            return "no";
+        }
+    }
+    return "yes";
+}

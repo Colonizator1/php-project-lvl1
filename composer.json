@@ -15,9 +15,7 @@
 	    "files": [
             "src/Cli.php",
             "src/functions.php",
-            "src/games/evenGame.php",
-            "src/games/calcGame.php",
-            "src/games/gcdGame.php"
+            "src/template.php"
         ]
 	},
 	"scripts": {

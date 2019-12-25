@@ -6,6 +6,10 @@ My First PHP-project
 ```bash
 composer require colonizator/php-project-lvl1
 ```
+or global install
+```bash
+composer global require colonizator/php-project-lvl1
+```
 ## How it's work.
 ```bash
 brain-even
@@ -19,3 +23,7 @@ brain-calc
 brain-gcd
 ```
 [![asciicast](https://asciinema.org/a/vUcH8ea6V3kpJKnso5oQdQX0u.svg)](https://asciinema.org/a/vUcH8ea6V3kpJKnso5oQdQX0u)
+```bash
+brain-progression
+```
+[![asciicast](https://asciinema.org/a/aMiXWO2ZmJqyGJ8UxVYVaFFkM.svg)](https://asciinema.org/a/aMiXWO2ZmJqyGJ8UxVYVaFFkM)

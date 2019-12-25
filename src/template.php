@@ -14,19 +14,23 @@ use function BrainGames\functions\calcGameCorrectAnswer;
 use function BrainGames\functions\gcdGameQuestion;
 use function BrainGames\functions\gcdGameCorrectAnswer;
 
-function startGame(int $countReplayGames, $game)
+function getRules($game)
 {
     switch ($game) {
         case 'brain-even':
-            $rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+            return 'Answer "yes" if the number is even, otherwise answer "no".';
             break;
         case 'brain-calc':
-            $rules = 'What is the result of the expression?';
+            return 'What is the result of the expression?';
             break;
         case 'brain-gcd':
-            $rules = 'Find the greatest common divisor of given numbers.';
+            return 'Find the greatest common divisor of given numbers.';
             break;
     }
+}
+function startGame(int $countReplayGames, $game)
+{
+    $rules = getRules($game);
     printHelloText($rules);
     $name = getname();
     for ($i = 1; $i <= $countReplayGames; $i++) {

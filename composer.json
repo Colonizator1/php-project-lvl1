@@ -1,9 +1,21 @@
 {
     "name": "colonizator/php-project-lvl1",
-    "description": "first project",
+    "type": "library",
+    "description": "first project on php - brain games",
+    "keywords": [
+        "cli",
+        "games"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Artur Kruchok",
+            "email": "admin@govorim.by"
+        }
+    ],
     "require": {
         "php": ">7.2",
-	    "wp-cli/php-cli-tools": "*"
+	    "wp-cli/php-cli-tools": "0.*"
     },
 	"bin": [
         "bin/brain-games",

@@ -31,3 +31,7 @@ brain-progression
 brain-prime
 ```
 [![asciicast](https://asciinema.org/a/VkVtxwC01qBTsVHEy9mNkEFlz.svg)](https://asciinema.org/a/VkVtxwC01qBTsVHEy9mNkEFlz)
+```bash
+When you are fail
+```
+[![asciicast](https://asciinema.org/a/rxNEoH05HWP0qyZcMCQBvKx0Q.svg)](https://asciinema.org/a/rxNEoH05HWP0qyZcMCQBvKx0Q)

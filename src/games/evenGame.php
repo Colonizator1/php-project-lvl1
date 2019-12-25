@@ -6,7 +6,9 @@ use function cli\line;
 use function cli\prompt;
 use function BrainGames\functions\printHelloText;
 use function BrainGames\functions\getName;
-use function BrainGames\functions\printResult;
+use function BrainGames\functions\gameResult;
+use function BrainGames\functions\evenGameQuestion;
+use function BrainGames\functions\evenGameCorrectAnswer;
 
 function startEvenGame(int $countReplayGames)
 {
@@ -14,20 +16,13 @@ function startEvenGame(int $countReplayGames)
     printHelloText($rules);
     $name = getname();
     for ($i = 1; $i <= $countReplayGames; $i++) {
-        $randomNum = mt_rand(1, 100);
-        line("Question: {$randomNum}");
-        if ($randomNum % 2 === 0) {
-            $correctAnswer = "yes";
-        } else {
-            $correctAnswer = "no";
-        }
+        //change here new game functions
+        $question = evenGameQuestion();
+        $correctAnswer = evenGameCorrectAnswer($question);
+        line("Question: {$question}");
         $answer = prompt("Your answer");
-        if (!printResult($answer, $correctAnswer)) {
-            line("Let's try again, $name!");
+        if (!gameResult($name, $answer, $correctAnswer, $i)) {
             break;
-        }
-        if ($i == $countReplayGames) {
-            line("Congratulations, $name!");
         }
     }
 }

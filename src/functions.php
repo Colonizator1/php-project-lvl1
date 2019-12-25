@@ -18,16 +18,6 @@ function getName()
     line();
     return $name;
 }
-function printResult($answer, $correctAnswer)
-{
-    if ($answer == $correctAnswer) {
-        line("Correct!");
-        return true;
-    } else {
-        line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.");
-        return false;
-    }
-}
 function gameResult($name, $answer, $correctAnswer, $numberOfGame)
 {
     if ($answer == $correctAnswer) {
@@ -35,6 +25,7 @@ function gameResult($name, $answer, $correctAnswer, $numberOfGame)
         if ($numberOfGame == 3) {
             line("Congratulations, $name!");
         }
+        return true;
     } else {
         line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.");
         line("Let's try again, $name!");
@@ -84,9 +75,9 @@ function gcdGameCorrectAnswer($question)
     $firstNum = $array[0];
     $secondNum = $array[1];
     $firstNum >= $secondNum ? $maxDivisor = $secondNum : $maxDivisor = $firstNum;
-    for ($i = $maxDivisor; $i > 0 ; $i-- ) {
-        if ($firstNum % $i == 0 && $secondNum % $i == 0) {
-            return $i;
+    for ($div = $maxDivisor; $div > 0; $div--) {
+        if ($firstNum % $div == 0 && $secondNum % $div == 0) {
+            return $div;
         }
-    } 
+    }
 }

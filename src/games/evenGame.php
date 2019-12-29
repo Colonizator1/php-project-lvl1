@@ -2,36 +2,25 @@
 
 namespace BrainGames\games\evenGame;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\functions\printHelloText;
-use function BrainGames\functions\getName;
-use function BrainGames\functions\gameResult;
+use function BrainGames\functions\engine;
 
-function evenGameQuestion()
+function evenGameQuestionsAndAnswers($countOfQuestions)
 {
-    return mt_rand(1, 100);
-}
-function evenGameCorrectAnswer($num)
-{
-    if ($num % 2 === 0) {
-        return "yes";
-    } else {
-        return "no";
-    }
-}
-function startEvenGame(int $countReplayGames)
-{
-    $rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-    printHelloText($rules);
-    $name = getname();
-    for ($i = 1; $i <= $countReplayGames; $i++) {
-        $question = evenGameQuestion();
-        $correctAnswer = evenGameCorrectAnswer($question);
-        line("Question: {$question}");
-        $answer = prompt("Your answer");
-        if (!gameResult($name, $answer, $correctAnswer, $i)) {
-            break;
+    $result = [];
+    for ($i = 1; $i <= $countOfQuestions; $i++) {
+        $question = mt_rand(1, 100);
+        if ($question % 2 === 0) {
+            $result[$question] = "yes";
+        } else {
+            $result[$question] = "no";
         }
     }
+    return $result;
+}
+function startEvenGame()
+{
+    $countReplayGames = 3;
+    $rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+    $arrQuestionsAnsewrs = evenGameQuestionsAndAnswers($countReplayGames);
+    engine($rules, $arrQuestionsAnsewrs);
 }

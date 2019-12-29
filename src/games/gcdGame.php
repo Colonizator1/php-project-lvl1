@@ -2,42 +2,29 @@
 
 namespace BrainGames\games\gcdGame;
 
-use function cli\line;
-use function cli\prompt;
-use function BrainGames\functions\printHelloText;
-use function BrainGames\functions\getName;
-use function BrainGames\functions\gameResult;
+use function BrainGames\functions\engine;
 
-function gcdGameQuestion()
+function gcdGameQuestionsAndAnswers($countOfQuestions)
 {
-    $firstNum = mt_rand(1, 100);
-    $secondNum = mt_rand(1, 100);
-    return "{$firstNum} {$secondNum}";
-}
-function gcdGameCorrectAnswer($question)
-{
-    $array = explode(' ', $question);
-    $firstNum = $array[0];
-    $secondNum = $array[1];
-    $firstNum >= $secondNum ? $maxDivisor = $secondNum : $maxDivisor = $firstNum;
-    for ($div = $maxDivisor; $div > 0; $div--) {
-        if ($firstNum % $div == 0 && $secondNum % $div == 0) {
-            return $div;
+    $result = [];
+    for ($i = 1; $i <= $countOfQuestions; $i++) {
+        $firstNum = mt_rand(1, 100);
+        $secondNum = mt_rand(1, 100);
+        $question = "{$firstNum} {$secondNum}";
+        $firstNum >= $secondNum ? $maxDivisor = $secondNum : $maxDivisor = $firstNum;
+        for ($div = $maxDivisor; $div > 0; $div--) {
+            if ($firstNum % $div == 0 && $secondNum % $div == 0) {
+                $result[$question] = $div;
+                break;
+            }
         }
     }
+    return $result;
 }
-function startGcdGame(int $countReplayGames)
+function startGcdGame()
 {
+    $countReplayGames = 3;
     $rules = 'Find the greatest common divisor of given numbers.';
-    printHelloText($rules);
-    $name = getname();
-    for ($i = 1; $i <= $countReplayGames; $i++) {
-        $question = gcdGameQuestion();
-        $correctAnswer = gcdGameCorrectAnswer($question);
-        line("Question: {$question}");
-        $answer = prompt("Your answer");
-        if (!gameResult($name, $answer, $correctAnswer, $i)) {
-            break;
-        }
-    }
+    $arrQuestionsAnsewrs = gcdGameQuestionsAndAnswers($countReplayGames);
+    engine($rules, $arrQuestionsAnsewrs);
 }

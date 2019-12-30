@@ -5,6 +5,8 @@ namespace BrainGames\functions;
 use function cli\line;
 use function cli\prompt;
 
+define('COUNT_GAME', 3);
+
 function engine($rules, array $array)
 {
     line('Welcome to the Brain Game!');

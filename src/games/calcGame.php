@@ -4,10 +4,12 @@ namespace BrainGames\games\calcGame;
 
 use function BrainGames\functions\engine;
 
-function calcGameQuestionsAndAnswers($countOfQuestions)
+define('CALC_RULES', 'What is the result of the expression?');
+
+function calcGameQuestionsAndAnswers()
 {
     $result = [];
-    for ($i = 1; $i <= $countOfQuestions; $i++) {
+    for ($i = 1; $i <= COUNT_GAME; $i++) {
         $firstNum = mt_rand(1, 100);
         $secondNum = mt_rand(1, 100);
         $operators = ['+', '-', '*'];
@@ -29,8 +31,6 @@ function calcGameQuestionsAndAnswers($countOfQuestions)
 }
 function startCalcGame()
 {
-    $countReplayGames = 3;
-    $rules = 'What is the result of the expression?';
-    $arrQuestionsAnsewrs = calcGameQuestionsAndAnswers($countReplayGames);
-    engine($rules, $arrQuestionsAnsewrs);
+    $arrQuestionsAnsewrs = calcGameQuestionsAndAnswers();
+    engine(CALC_RULES, $arrQuestionsAnsewrs);
 }

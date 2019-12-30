@@ -4,11 +4,13 @@ namespace BrainGames\games\progrGame;
 
 use function BrainGames\functions\engine;
 
-function progrGameQuestionsAndAnswers($countOfQuestions)
+define('PROGR_RULES', 'What number is missing in the progression?');
+
+function progrGameQuestionsAndAnswers()
 {
     $result = [];
     $lenthProgression = 10;
-    for ($i = 1; $i <= $countOfQuestions; $i++) {
+    for ($i = 1; $i <= COUNT_GAME; $i++) {
         $startProgression = mt_rand(1, 20);
         $diffProgression = mt_rand(1, 10);
         $unknownNum = mt_rand(1, 10);
@@ -26,8 +28,6 @@ function progrGameQuestionsAndAnswers($countOfQuestions)
 }
 function startProgrGame()
 {
-    $countReplayGames = 3;
-    $rules = 'What number is missing in the progression?';
-    $arrQuestionsAnsewrs = progrGameQuestionsAndAnswers($countReplayGames);
-    engine($rules, $arrQuestionsAnsewrs);
+    $arrQuestionsAnsewrs = progrGameQuestionsAndAnswers();
+    engine(PROGR_RULES, $arrQuestionsAnsewrs);
 }

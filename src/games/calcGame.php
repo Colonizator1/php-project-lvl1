@@ -2,9 +2,10 @@
 
 namespace BrainGames\games\calcGame;
 
-use function BrainGames\functions\engine;
+use function BrainGames\functions\startEngine;
 
 define('CALC_RULES', 'What is the result of the expression?');
+define('OPERATORS', ['+', '-', '*']);
 
 function calcGameQuestionsAndAnswers()
 {
@@ -12,8 +13,7 @@ function calcGameQuestionsAndAnswers()
     for ($i = 1; $i <= COUNT_GAME; $i++) {
         $firstNum = mt_rand(1, 100);
         $secondNum = mt_rand(1, 100);
-        $operators = ['+', '-', '*'];
-        $randomOperator = $operators[mt_rand(0, count($operators) - 1)];
+        $randomOperator = OPERATORS[mt_rand(0, count(OPERATORS) - 1)];
         $question = "{$firstNum} {$randomOperator} {$secondNum}";
         switch ($randomOperator) {
             case '+':
@@ -32,5 +32,5 @@ function calcGameQuestionsAndAnswers()
 function startCalcGame()
 {
     $arrQuestionsAnsewrs = calcGameQuestionsAndAnswers();
-    engine(CALC_RULES, $arrQuestionsAnsewrs);
+    startEngine(CALC_RULES, $arrQuestionsAnsewrs);
 }

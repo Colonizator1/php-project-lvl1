@@ -7,15 +7,15 @@ use function cli\prompt;
 
 define('COUNT_GAME', 3);
 
-function engine($rules, array $array)
+function startEngine($GameRule, array $questionsAndCorrectAnswers)
 {
     line('Welcome to the Brain Game!');
-    line($rules);
+    line($GameRule);
     line();
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     line();
-    foreach ($array as $question => $correctAnswer) {
+    foreach ($questionsAndCorrectAnswers as $question => $correctAnswer) {
         line("Question: {$question}");
         $answer = prompt("Your answer");
         if ($answer == $correctAnswer) {

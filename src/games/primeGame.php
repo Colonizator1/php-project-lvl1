@@ -7,6 +7,9 @@ use function BrainGames\functions\startEngine;
 define('PRIME_RULES', 'Answer "yes" if given number is prime. Otherwise answer "no".');
 function isPrime($num)
 {
+    if ($num < 2) {
+        return false;
+    }
     for ($j = 2; $j <= floor($num / 2); $j++) {
         if ($num % $j == 0) {
             return false;

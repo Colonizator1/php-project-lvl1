@@ -17,7 +17,7 @@
         "php": ">7.2",
 	    "wp-cli/php-cli-tools": "0.*"
     },
-	"bin": [
+    "bin": [
         "bin/brain-games",
         "bin/brain-even",
         "bin/brain-calc",
@@ -26,17 +26,17 @@
         "bin/brain-prime"
     ],
     "autoload": {
-	    "files": [
+        "files": [
             "src/Cli.php",
-            "src/functions.php",
+            "src/engine.php",
             "src/games/evenGame.php",
             "src/games/calcGame.php",
             "src/games/gcdGame.php",
             "src/games/progrGame.php",
             "src/games/primeGame.php"
         ]
-	},
-	"scripts": {
+    },
+    "scripts": {
         "phpcs": "phpcs"
     },
     "require-dev": {

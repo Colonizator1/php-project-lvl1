@@ -1,16 +1,16 @@
 <?php
 
-namespace BrainGames\functions;
+namespace BrainGames\engine;
 
 use function cli\line;
 use function cli\prompt;
 
-define('COUNT_GAME', 3);
+define('GAMESCOUNT', 3);
 
-function startEngine($GameRule, array $questionsAndCorrectAnswers)
+function startEngine($gameRule, array $questionsAndCorrectAnswers)
 {
     line('Welcome to the Brain Game!');
-    line($GameRule);
+    line($gameRule);
     line();
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);

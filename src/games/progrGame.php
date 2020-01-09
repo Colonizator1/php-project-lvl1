@@ -2,24 +2,24 @@
 
 namespace BrainGames\games\progrGame;
 
-use function BrainGames\functions\startEngine;
+use function BrainGames\engine\startEngine;
 
-define('PROGR_RULES', 'What number is missing in the progression?');
-define('LENTH_PROGR', 10);
+define('PROGR_RULE', 'What number is missing in the progression?');
+define('LENGTH', 10);
 
-function progrGameQuestionsAndAnswers()
+function getProgrGameQuestionsAndAnswers()
 {
     $result = [];
-    for ($i = 1; $i <= COUNT_GAME; $i++) {
+    for ($i = 1; $i <= GAMESCOUNT; $i++) {
         $startProgression = mt_rand(1, 20);
         $diffProgression = mt_rand(1, 10);
-        $unknownNum = mt_rand(1, LENTH_PROGR);
-        $progression = [$startProgression];
-        for ($j = 1; $j < LENTH_PROGR; $j++) {
+        $unknownNumPosition = mt_rand(1, LENGTH);
+        $progression = [];
+        for ($j = 0; $j < LENGTH; $j++) {
             $progression[$j] = $startProgression + $diffProgression * $j;
         }
-        $unknown = $progression[$unknownNum];
-        $progression[$unknownNum] = "..";
+        $unknown = $progression[$unknownNumPosition];
+        $progression[$unknownNumPosition] = "..";
         $strProgression = implode(" ", $progression);
         $question = "$strProgression";
         $result[$question] = $unknown;
@@ -28,6 +28,6 @@ function progrGameQuestionsAndAnswers()
 }
 function startProgrGame()
 {
-    $arrQuestionsAnsewrs = progrGameQuestionsAndAnswers();
-    startEngine(PROGR_RULES, $arrQuestionsAnsewrs);
+    $questionsAnsewrs = getProgrGameQuestionsAndAnswers();
+    startEngine(PROGR_RULE, $questionsAnsewrs);
 }

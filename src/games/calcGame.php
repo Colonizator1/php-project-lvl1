@@ -2,35 +2,35 @@
 
 namespace BrainGames\games\calcGame;
 
-use function BrainGames\functions\startEngine;
+use function BrainGames\engine\startEngine;
 
-define('CALC_RULES', 'What is the result of the expression?');
+define('CALC_RULE', 'What is the result of the expression?');
 define('OPERATORS', ['+', '-', '*']);
 
-function calcGameQuestionsAndAnswers()
+function getCalcGameQuestionsAndAnswers()
 {
-    $result = [];
-    for ($i = 1; $i <= COUNT_GAME; $i++) {
+    $results = [];
+    for ($i = 1; $i <= GAMESCOUNT; $i++) {
         $firstNum = mt_rand(1, 100);
         $secondNum = mt_rand(1, 100);
         $randomOperator = OPERATORS[mt_rand(0, count(OPERATORS) - 1)];
         $question = "{$firstNum} {$randomOperator} {$secondNum}";
         switch ($randomOperator) {
             case '+':
-                $result[$question] = $firstNum + $secondNum;
+                $results[$question] = $firstNum + $secondNum;
                 break;
             case '-':
-                $result[$question] = $firstNum - $secondNum;
+                $results[$question] = $firstNum - $secondNum;
                 break;
             case '*':
-                $result[$question] = $firstNum * $secondNum;
+                $results[$question] = $firstNum * $secondNum;
                 break;
         }
     }
-    return $result;
+    return $results;
 }
 function startCalcGame()
 {
-    $arrQuestionsAnsewrs = calcGameQuestionsAndAnswers();
-    startEngine(CALC_RULES, $arrQuestionsAnsewrs);
+    $questionsAnsewrs = getCalcGameQuestionsAndAnswers();
+    startEngine(CALC_RULE, $questionsAnsewrs);
 }

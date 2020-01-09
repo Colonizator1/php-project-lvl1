@@ -2,9 +2,9 @@
 
 namespace BrainGames\games\gcdGame;
 
-use function BrainGames\functions\startEngine;
+use function BrainGames\engine\startEngine;
 
-define('GCD_RULES', 'Find the greatest common divisor of given numbers.');
+define('GCD_RULE', 'Find the greatest common divisor of given numbers.');
 
 function getGCD(int $firstNum, int $secondNum)
 {
@@ -15,10 +15,10 @@ function getGCD(int $firstNum, int $secondNum)
         }
     }
 }
-function gcdGameQuestionsAndAnswers()
+function getGcdGameQuestionsAndAnswers()
 {
     $result = [];
-    for ($i = 1; $i <= COUNT_GAME; $i++) {
+    for ($i = 1; $i <= GAMESCOUNT; $i++) {
         $firstNum = mt_rand(1, 100);
         $secondNum = mt_rand(1, 100);
         $question = "{$firstNum} {$secondNum}";
@@ -28,6 +28,6 @@ function gcdGameQuestionsAndAnswers()
 }
 function startGcdGame()
 {
-    $arrQuestionsAnsewrs = gcdGameQuestionsAndAnswers();
-    startEngine(GCD_RULES, $arrQuestionsAnsewrs);
+    $questionsAnsewrs = getGcdGameQuestionsAndAnswers();
+    startEngine(GCD_RULE, $questionsAnsewrs);
 }

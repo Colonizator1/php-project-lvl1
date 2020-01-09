@@ -2,30 +2,30 @@
 
 namespace BrainGames\games\evenGame;
 
-use function BrainGames\functions\startEngine;
+use function BrainGames\engine\startEngine;
 
-define('EVEN_RULES', 'Answer "yes" if the number is even, otherwise answer "no".');
+define('EVEN_RULE', 'Answer "yes" if the number is even, otherwise answer "no".');
 
 function isEven($num)
 {
     return $num % 2 === 0;
 }
-function evenGameQuestionsAndAnswers()
+function getEvenGameQuestionsAndAnswers()
 {
-    $result = [];
-    for ($i = 1; $i <= COUNT_GAME; $i++) {
+    $results = [];
+    for ($i = 1; $i <= GAMESCOUNT; $i++) {
         $question = mt_rand(1, 100);
         if (isEven($question)) {
-            $result[$question] = "yes";
+            $results[$question] = "yes";
         } else {
-            $result[$question] = "no";
+            $results[$question] = "no";
         }
     }
-    return $result;
+    return $results;
 }
 
 function startEvenGame()
 {
-    $arrQuestionsAnsewrs = evenGameQuestionsAndAnswers();
-    startEngine(EVEN_RULES, $arrQuestionsAnsewrs);
+    $questionsAnsewrs = getEvenGameQuestionsAndAnswers();
+    startEngine(EVEN_RULE, $questionsAnsewrs);
 }

@@ -4,7 +4,10 @@ namespace BrainGames\games\primeGame;
 
 use function BrainGames\engine\startEngine;
 
+use const BrainGames\engine\GAMES_COUNT;
+
 define('PRIME_RULE', 'Answer "yes" if given number is prime. Otherwise answer "no".');
+
 function isPrime($num)
 {
     if ($num < 2) {
@@ -17,19 +20,17 @@ function isPrime($num)
     }
     return true;
 }
+
 function getPrimeGameQuestionsAndAnswers()
 {
-    $result = [];
-    for ($i = 1; $i <= GAMESCOUNT; $i++) {
+    $questionsAnsewrs = [];
+    for ($i = 1; $i <= GAMES_COUNT; $i++) {
         $question = mt_rand(1, 100);
-        if (isPrime($question)) {
-            $result[$question] = "yes";
-        } else {
-            $result[$question] = "no";
-        }
+        $questionsAnsewrs[$question] = isPrime($question) ? "yes" : "no";
     }
-    return $result;
+    return $questionsAnsewrs;
 }
+
 function startPrimeGame()
 {
     $questionsAnsewrs = getPrimeGameQuestionsAndAnswers();

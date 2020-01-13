@@ -4,6 +4,8 @@ namespace BrainGames\games\gcdGame;
 
 use function BrainGames\engine\startEngine;
 
+use const BrainGames\engine\GAMES_COUNT;
+
 define('GCD_RULE', 'Find the greatest common divisor of given numbers.');
 
 function getGCD(int $firstNum, int $secondNum)
@@ -15,17 +17,19 @@ function getGCD(int $firstNum, int $secondNum)
         }
     }
 }
+
 function getGcdGameQuestionsAndAnswers()
 {
-    $result = [];
-    for ($i = 1; $i <= GAMESCOUNT; $i++) {
+    $questionsAnsewrs = [];
+    for ($i = 1; $i <= GAMES_COUNT; $i++) {
         $firstNum = mt_rand(1, 100);
         $secondNum = mt_rand(1, 100);
         $question = "{$firstNum} {$secondNum}";
-        $result[$question] = getGCD($firstNum, $secondNum);
+        $questionsAnsewrs[$question] = getGCD($firstNum, $secondNum);
     }
-    return $result;
+    return $questionsAnsewrs;
 }
+
 function startGcdGame()
 {
     $questionsAnsewrs = getGcdGameQuestionsAndAnswers();

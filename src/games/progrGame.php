@@ -4,32 +4,36 @@ namespace BrainGames\games\progrGame;
 
 use function BrainGames\engine\startEngine;
 
+use const BrainGames\engine\GAMES_COUNT;
+
 define('PROGR_RULE', 'What number is missing in the progression?');
 define('LENGTH', 10);
-function generateProgression($length)
+
+function generateProgression($startProgression, $diffProgression, $length)
 {
-    $startProgression = mt_rand(1, 20);
-    $diffProgression = mt_rand(1, 10);
-    $results = [];
+    $progression = [];
     for ($i = 0; $i < $length; $i++) {
-        $results[$i] = $startProgression + $diffProgression * $i;
+        $progression[$i] = $startProgression + $diffProgression * $i;
     }
-    return $results;
+    return $progression;
 }
+
 function getProgrGameQuestionsAndAnswers()
 {
-    $result = [];
-    for ($i = 1; $i <= GAMESCOUNT; $i++) {
-        $progression = generateProgression(LENGTH);
-        $unknownNumPosition = mt_rand(1, LENGTH);
+    $questionsAnsewrs = [];
+    for ($i = 1; $i <= GAMES_COUNT; $i++) {
+        $startProgression = mt_rand(1, 20);
+        $diffProgression = mt_rand(1, 10);
+        $progression = generateProgression($startProgression, $diffProgression, LENGTH);
+        $unknownNumPosition = mt_rand(0, LENGTH - 1);
         $answer = $progression[$unknownNumPosition];
         $progression[$unknownNumPosition] = "..";
-        $strProgression = implode(" ", $progression);
-        $question = "$strProgression";
-        $result[$question] = $answer;
+        $question = implode(" ", $progression);
+        $questionsAnsewrs[$question] = $answer;
     }
-    return $result;
+    return $questionsAnsewrs;
 }
+
 function startProgrGame()
 {
     $questionsAnsewrs = getProgrGameQuestionsAndAnswers();
